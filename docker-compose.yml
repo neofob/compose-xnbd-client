@@ -1,0 +1,16 @@
+---
+version: '3'
+services:
+  xnbd_client:
+    build:
+      context: ./build
+      args:
+        DISTRO_VERSION: ${DISTRO_VERSION}
+    image: neofob/xnbd_client:${DISTRO_VERSION}
+    container_name: xnbd_client
+    privileged: true
+    entrypoint:
+      - /usr/sbin/xnbd-client
+      - ${NBD_HOST}
+      - ${NBD_PORT}
+      - ${NBD_DEV}
