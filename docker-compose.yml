@@ -9,8 +9,12 @@ services:
     image: neofob/xnbd_client:${DISTRO_VERSION}
     container_name: xnbd_client
     privileged: true
+    volumes:
+      - ./scripts/entrypoint.sh:/entrypoint.sh
+    devices:
+      - ${NBD_DEV}:${NBD_DEV}
     entrypoint:
-      - /usr/sbin/xnbd-client
+      - /entrypoint.sh
       - ${NBD_HOST}
       - ${NBD_PORT}
       - ${NBD_DEV}

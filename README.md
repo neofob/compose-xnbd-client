@@ -1,6 +1,6 @@
 xnbd-client in docker container
 ===============================
-*connect to a nbd server*
+*connect to a `nbd` server*
 
 Load `nbd` kernel module on host machine
 ```
@@ -10,7 +10,7 @@ Load `nbd` kernel module on host machine
 Build the docker image and spin it up
 ```
 docker-compose build
-docker-compose up
+docker-compose up -d
 ```
 
 Default Settings
@@ -22,4 +22,10 @@ Default Settings
 |   `NBD_PORT`           |      `8520`       |
 |   `NBD_DEV`           |      `/dev/nbd0`   |
 
+TODO
+====
+* Trap Signal in [`entrypoint.sh`][0] to cleanly disconnect
+
 __author__: *tuan t. pham*
+
+[0]: ./scripts/entrypoint.sh
